@@ -1,7 +1,7 @@
 import java.util.Scanner; // scanner를 사용하기 위함
-import java.util.ArrayList; // arraylist를 사용하기 위함
+import java.util.*; // arraylist를 사용하기 위함
 
-class Main {
+class Test {
   public static void main(String[] args) {
 	  // 입력받는 함수
     Scanner sc = new Scanner(System.in);
@@ -11,8 +11,9 @@ class Main {
     String body;
     String new_title;
     String new_body;
+    int cnt = 0;
     // print 클래스 호출
-    print p = new print();
+    print2 p = new print2();
     
     while(true) {
     	// print 클래스 안의 menu 메소드 호출
@@ -35,9 +36,10 @@ class Main {
     		body = sc.nextLine();
     		// body에 입력된 값을 Bodies에 저장
     		Bodies.add(body);
+    		cnt++;
     	}
     	else if(s.equals("list")) {
-    		for(int i = 0; i < Titles.size(); i++) {
+    		for(int i = 0; i < cnt; i++) {
     			System.out.println("");
     			System.out.println((i + 1) + "번째");
     			// Titles에 저장된 값을 불러오는 함수(get())
@@ -48,7 +50,7 @@ class Main {
 			System.out.println("");
     	}
     	else if(s.equals("read")) {
-    		for(int i = 0; i < Titles.size(); i++) {
+    		for(int i = 0; i < cnt; i++) {
     			System.out.println("");
     			System.out.println("번호 : " + (i + 1));
         		System.out.println("제목 : " + Titles.get(i));
@@ -60,7 +62,7 @@ class Main {
     		System.out.println("원하는 게시물의 번호를 입력해주십시오.");
     		int i = sc.nextInt();
     		sc.nextLine();
-    		if(i > Titles.size()) { 
+    		if(i > cnt) { 
     			System.out.println("");
     			System.out.println("게시물이 존재하지 않습니다.");
     		}
@@ -77,7 +79,7 @@ class Main {
     		System.out.println("수정을 원하는 게시물의 번호를 입력해주십시오.");
     		int i = sc.nextInt();
     		sc.nextLine();
-    		if(i > Titles.size()) {
+    		if(i > cnt) {
     			System.out.println("");
     			System.out.println("게시물이 존재하지 않습니다.");
     		}
@@ -93,7 +95,7 @@ class Main {
     			System.out.println("수정이 완료되었습니다.");
     			System.out.println("");
     			System.out.println("-----수정 후-----");
-        		for(int num = 0; num < Titles.size(); num++) {
+        		for(int num = 0; num < cnt; num++) {
         			System.out.println("번호 : " + (num + 1));
             		System.out.println("제목 : " + Titles.get(num));
             		System.out.println("내용 : " + Bodies.get(num));
@@ -106,18 +108,19 @@ class Main {
     		System.out.println("삭제를 원하는 게시물의 번호를 입력해주십시오.");
     		int i = sc.nextInt();
     		sc.nextLine();
-    		if(i > Titles.size()) {
+    		if(i > cnt) {
     			System.out.println("");
     			System.out.println("게시물이 존재하지 않습니다.");
     		}
     		else {
     			Titles.remove(i - 1);
     			Bodies.remove(i - 1);
+    			cnt--;
     			System.out.println("");
     			System.out.println("수정이 완료되었습니다.");
     			System.out.println("");
     			System.out.println("-----수정 후-----");
-        		for(int num = 0; num < Titles.size(); num++) {
+        		for(int num = 0; num < cnt; num++) {
         			System.out.println("번호 : " + (num + 1));
             		System.out.println("제목 : " + Titles.get(num));
             		System.out.println("내용 : " + Bodies.get(num));
@@ -130,7 +133,7 @@ class Main {
   }
 }
 
-class print {
+class print2 {
 	void menu() {
 		System.out.println("원하는 기능에 맞게 입력해주십시오.");
 		System.out.println("게시물 추가 : add");
