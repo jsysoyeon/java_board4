@@ -57,7 +57,7 @@ class Main {
     	}
     	else if(s.equals("search")) {
 			System.out.println("");
-    		System.out.println("원하는 게시물의 번호를 입력해주십시오.");
+    		System.out.println("보고싶은 게시물의 번호를 입력해주십시오.");
     		int i = sc.nextInt();
     		sc.nextLine();
     		if(i > Titles.size()) { 
